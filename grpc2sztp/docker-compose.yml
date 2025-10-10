@@ -1,0 +1,47 @@
+services:
+  grpc-sztp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: grpc-sztp-server
+    ports:
+      - "9090:9090"
+    environment:
+      # gRPC Server Configuration
+      - GRPC_SERVER_PORT=9090
+      
+      # SZTP API Configuration
+      - SZTP_API_BASE_URL=${SZTP_API_BASE_URL}
+      - SZTP_API_TIMEOUT_SECONDS=${SZTP_API_TIMEOUT_SECONDS:-3000}
+      - SZTP_API_RETRY_ATTEMPTS=${SZTP_API_RETRY_ATTEMPTS:-3}
+      - SZTP_API_AUTH_CERTIFICATE_PATH=${SZTP_API_AUTH_CERTIFICATE_PATH}
+      - SZTP_API_AUTH_CERTIFICATE_PASSWORD=${SZTP_API_AUTH_CERTIFICATE_PASSWORD}
+      
+      # Logging Configuration
+      - LOGGING_LEVEL_COM_NOKIA_GRPC2SZTP=${LOGGING_LEVEL_COM_NOKIA_GRPC2SZTP:-DEBUG}
+      - LOGGING_LEVEL_OKHTTP3=${LOGGING_LEVEL_OKHTTP3:-INFO}
+      
+      # JVM Configuration
+      - JAVA_OPTS=-Xms256m -Xmx512m -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0
+    volumes:
+      # Mount certificates directory if needed
+      - ./certificates:/app/certificates:ro
+    networks:
+      - grpc-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 9090 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  grpc-network:
+    driver: bridge
+    name: sztp-network
