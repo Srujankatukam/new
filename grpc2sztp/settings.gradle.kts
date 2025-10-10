@@ -1,1 +1,1 @@
-rootProject.name = "grpc2sztp"
+rootProject.name = "grpc2sztp-integrated"

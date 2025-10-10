@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" tests="17" skipped="0" failures="0" errors="0" timestamp="2025-10-10T05:01:29.621Z" hostname="cursor" time="1.376">
+  <properties/>
+  <testcase name="testGetSerialInfoWithIen_IenMismatch()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="1.271"/>
+  <testcase name="testGetComponentDto_PreferUpdatedMacOverMacAddress()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.006"/>
+  <testcase name="testGetSerialInfoWithIen_Success()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.005"/>
+  <testcase name="testGetAllSerialNumbers()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.004"/>
+  <testcase name="testIsValidForSztp_NotFound()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.005"/>
+  <testcase name="testGetComponentDto_FallbackToMacAddressWhenNoUpdatedMac()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.003"/>
+  <testcase name="testSerialExists_True()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.006"/>
+  <testcase name="testGetComponentDto_Success()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.003"/>
+  <testcase name="testGetSerialInfo_NotFound()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.004"/>
+  <testcase name="testGetSerialInfo_Success()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.002"/>
+  <testcase name="testGetValidSerialsForSztp()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.014"/>
+  <testcase name="testGetComponentDto_NotFound()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.004"/>
+  <testcase name="testGetStatistics()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.006"/>
+  <testcase name="testSerialExists_False()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.003"/>
+  <testcase name="testIsValidForSztp_NoIen()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.005"/>
+  <testcase name="testIsValidForSztp_NoMac()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.005"/>
+  <testcase name="testIsValidForSztp_Valid()" classname="com.nokia.grpc2sztp.integration.EdpIntegrationServiceTest" time="0.003"/>
+  <system-out><![CDATA[05:01:30.875 [Test worker] WARN com.nokia.grpc2sztp.service.EdpIntegrationService -- IEN mismatch for serial TEST-SERIAL-123: expected 9999, found 6527
+05:01:30.919 [Test worker] WARN com.nokia.grpc2sztp.service.EdpIntegrationService -- Serial number not found in EDP database: NON-EXISTENT
+05:01:30.985 [Test worker] WARN com.nokia.grpc2sztp.service.EdpIntegrationService -- Serial number NO-IEN-SERIAL has no IEN
+05:01:30.991 [Test worker] WARN com.nokia.grpc2sztp.service.EdpIntegrationService -- Serial number NO-MAC-SERIAL has no MAC address
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/home/ubuntu/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.10/90ed94ac044ea8953b224304c762316e91fd6b31/byte-buddy-agent-1.14.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

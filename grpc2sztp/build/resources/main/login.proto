@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package login.v1;
+
+// Java code generation options
+option java_package = "login.v1";
+option java_outer_classname = "LoginProto";
+option java_multiple_files = true;
+
+// Go package option
+option go_package = "github.com/nokia/grpc2sztp_demo/login/v1;loginv1";
+
+// AuthRequest contains user credentials for authentication
+message AuthRequest {
+  // Username for authentication (required)
+  string username = 1;
+  // Organization identifier (required)     
+  string org_id = 2;
+  // User password (required, should be transmitted over secure channel only)       
+  string password = 3;       
+}
+
+// AuthResponse contains authentication result
+message AuthResponse {
+  // JWT token for API access
+  string token = 1;     
+}
+
+// LoginService provides user authentication functionality
+service LoginService {
+  // Authenticate user with username and password
+  // Returns JWT token on successful authentication
+  rpc Login(AuthRequest) returns (AuthResponse);
+}
